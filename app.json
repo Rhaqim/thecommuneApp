@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "restaurantreviewer",
+    "slug": "restaurantreviewer",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
