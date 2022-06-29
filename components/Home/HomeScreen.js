@@ -60,7 +60,7 @@ const HomeScreen = ({ navigation, route }) => {
 
     useEffect(() => {
         if (route.params?.post) {
-            setSelectedImage(route.params.post);
+            // setSelectedImage(route.params.post);
         }
     }, [route.params?.post]);
 
