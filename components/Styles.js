@@ -7,7 +7,7 @@ const colors = {
     secondary: '#4ecdc4',
     tertiary: '#ff6b6b',
     quaternary: '#ffcc00',
-    background: '#f5f5f5',
+    background: 'black',
 }
 
 const styles = StyleSheet.create({
@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'flex-end',
         marginBottom: 1,
+        backgroundColor: colors.background,
     },
     instructions: {
         color: '#888',
@@ -89,7 +90,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         width: "100%",
         height: 50,
-        color: '#242526',
+        color: 'black',
         fontSize: 20,
     }
 });
