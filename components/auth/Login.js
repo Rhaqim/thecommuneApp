@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, View, TouchableOpacity, TextInput } from "react-native";
+import { Text, View, TouchableOpacity, TextInput, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard } from "react-native";
 import styles from "./AuthStyles";
 
 const Login = ({ navigation }) => {
@@ -19,58 +19,36 @@ const Login = ({ navigation }) => {
     }
 
     return (
-        <View style={styles.pageView}>
-            <View style={styles.loginContainer}>
-                <View style={styles.headerView}>
-                    <Text style={styles.title}>Login</Text>
-                    <Text style={styles.error}>{error}</Text>
-                </View>
-                <View style={styles.userInput}>
-                    <TextInput style={styles.input} placeholder="Username" onChangeText={(text) => setUsername(text)} />
-                    <TextInput style={styles.input} placeholder="Password" onChangeText={(text) => setPassword(text)} />
-                </View>
-                <View style={styles.view}>
-                    <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-                        <Text style={styles.buttonText}>Login</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Register")}>
-                        <Text style={styles.buttonText}>Register</Text>
-                    </TouchableOpacity>
+        <KeyboardAvoidingView
+            style={styles.pageView}
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+        >
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <View style={styles.loginContainer}>
+                    <View style={styles.headerView}>
+                        <Text style={styles.title}>Login</Text>
+                        <Text style={styles.error}>{error}</Text>
+                    </View>
+                    <View style={styles.userInput}>
+                        <TextInput style={styles.input} placeholder="Username" placeholderTextColor={"#000"} onChangeText={(text) => setUsername(text)} />
+                        <TextInput style={styles.input} placeholder="Password" placeholderTextColor={"#000"} onChangeText={(text) => setPassword(text)} />
+                    </View>
+                    <View style={styles.buttonContainer}>
+                        <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+                            <Text style={styles.buttonText}>Login</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Register")}>
+                            <Text style={styles.buttonText}>Register</Text>
+                        </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("ForgotPassword")}>
-                        <Text style={styles.buttonText}>Forgot Password</Text>
-                    </TouchableOpacity>
+                        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("ForgotPassword")}>
+                            <Text style={styles.buttonText}>Forgot Password</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-            </View>
-        </View>
+            </TouchableWithoutFeedback>
+        </KeyboardAvoidingView>
     );
 }
 
 export default Login;
-
-
-
-
-{/* <Text style={styles.title}>Login</Text>
-            {error !== "" && <Text style={styles.error}>{error}</Text>}
-            <TextInput
-                style={styles.input}
-                placeholder="Username"
-                onChangeText={(text) => setUsername(text)}
-                value={username}
-            >
-                <Text
-                style={{color: 'red', opacity: 0.3 }}>
-                    Username
-                </Text>
-            </TextInput>
-            <TextInput
-                style={styles.input}
-                placeholder="Password"
-                onChangeText={(text) => setPassword(text)}
-                value={password}
-                secureTextEntry={true}
-            />
-            <TouchableOpacity onPress={handleSubmit} style={styles.button}>
-                <Text style={styles.buttonText}>Login</Text>
-            </TouchableOpacity> */}
