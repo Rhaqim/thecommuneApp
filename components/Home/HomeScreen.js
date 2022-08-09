@@ -1,10 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, Platform, Button } from 'react-native';
+import { Text, View, Image, TouchableOpacity, Platform, Button } from 'react-native';
 import logo from '../../assets/271.jpg';
 import * as ImagePicker from 'expo-image-picker';
 import * as Sharing from 'expo-sharing';
 import uploadToAnonymousFilesAsync from 'anonymous-files';
+
+import styles from '../Styles';
 
 const HomeScreen = ({ navigation, route }) => {
 
@@ -66,6 +68,7 @@ const HomeScreen = ({ navigation, route }) => {
 
     return (
         <View style={styles.container}>
+            <TouchableOpacity onPress={() => navigation.navigate('Main')} ><Text>Go to MainPage</Text></TouchableOpacity>
             <Image source={logo} style={styles.logo} />
             {/* <Image source={splash} style={styles.logo} /> */}
             <Text style={styles.instructions}>To share a photo from your phone with a friend, just press the button below!</Text>
@@ -96,43 +99,5 @@ const HomeScreen = ({ navigation, route }) => {
         </View >
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    instructions: {
-        color: '#888',
-        fontSize: 20,
-    },
-    logo: {
-        width: 305,
-        height: 159,
-        marginBottom: 20,
-    },
-    image: {
-        width: 305,
-        height: 159,
-        marginTop: 20,
-    },
-    button: {
-        backgroundColor: 'blue',
-        borderRadius: 50,
-        padding: 7,
-        marginTop: 20
-    },
-    buttonText: {
-        fontSize: 20,
-        color: '#fff',
-    },
-    thumbnail: {
-        width: 300,
-        height: 300,
-        resizeMode: "contain",
-    }
-});
 
 export default HomeScreen;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Image, TouchableOpacity, Platform, Button, TextInput } from "react-native";
+import { Button, TextInput } from "react-native";
 
 const CreatePostScreen = ({ navigation, route }) => {
     const { postText, setPostText } = useState('');
