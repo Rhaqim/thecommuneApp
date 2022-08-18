@@ -10,13 +10,15 @@ const FeaturedRow = ({ id, title, description }) => {
     useEffect(() => {
         // sanityClient.fetch(`*[_type == "restaurant" && _id == "${id}"]{name, description, image, _id}`).then((data) => {
         //     console.log(data)
+        const id = "003581aa-2a54-4934-abc7-7fe476f6708b"
         sanityClient.fetch(`*[_type == "featured" && _id == "${id}"]
         {restaurants[]->
-            {_id, image, name, rating}
-        }`).then((data) => {
-            setRestaurants(data[0].restaurants)
+        }[0]`).then((data) => {
+            setRestaurants(data?.restaurants)
         })
     }, [])
+
+    console.log(restaurants)
 
     return (
         <View>
@@ -31,6 +33,18 @@ const FeaturedRow = ({ id, title, description }) => {
                 contentContainerStyle={{ paddingHorizontal: 15 }}
                 className="pt-4"
             >
+                {restaurants.map((restaurant) => (
+                    <RestaurantCard 
+                    key={restaurant._id} 
+                    title={restaurant.RestaurantName}
+                    // imgUrl={restaurant.restaurantImage}
+                    rating={restaurant.restaurantRating}
+                    address={restaurant.restaurantAddress}
+                    short_description={restaurant.shortDescription}
+                    // genre={restaurant.genre}
+
+                     />
+                ))}
                 {/* Resturant Cards */}
                 <RestaurantCard
                     id={12}
